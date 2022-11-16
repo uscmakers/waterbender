@@ -18,8 +18,8 @@ double times[10] = {};
 // Beginning of array is bottom of image
 int pxCol[10] = {1,0,0,0,0,0,0,0,0,0};
 
-/*
-int pxMatrix[10][10] = {
+
+int pxMatrixLines[10][10] = {
 {1,1,1,1,1,1,1,1,1,1},
 {0,0,0,0,0,0,0,0,0,0},
 {1,1,1,1,1,1,1,1,1,1},
@@ -31,7 +31,6 @@ int pxMatrix[10][10] = {
 {1,1,1,1,1,1,1,1,1,1},
 {0,0,0,0,0,0,0,0,0,0}
 };
-*/
 
 
 int pxMatrix[10][10] = {
@@ -59,6 +58,19 @@ int pxMatrix1[10][10] = {
 {0,0,1,0,0,0,0,1,0,0},
 {0,0,0,1,1,1,1,0,0,0},
 {0,0,0,0,0,0,0,0,0,0}
+};
+
+int pxMatrix1_1[10][10] = {
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{1,1,0,0,0,0,0,0,1,1},
+{0,1,1,0,0,0,0,1,1,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,0,1,1,1,1,0,0,0}
 };
 
 int pxMatrix2[10][10] = {
@@ -109,7 +121,7 @@ void setup() {
     double x1 = i * yRes;
     double x2 = (i + 1) * yRes;
     double t1 = sqrt(2 * x1 / g);
-    double t2 = sqrt(2 * x2 / g);;
+    double t2 = sqrt(2 * x2 / g);
     // Delay for pixel i
     times[i] = t2 - t1;
     times[i] = times[i] * 1000;
@@ -126,10 +138,11 @@ void setup() {
 }
 
 void loop() {
+  /*
   // display a column of an image
   for(int i = 0; i<yDiv; i++) {
     for(int j = 0; j<NUM_VALVES; j++) {
-      if(pxMatrix[i][j]) {
+      if(pxMatrix[i][j] == 1) {
         digitalWrite(SOL1+j, HIGH);
       } else {
         digitalWrite(SOL1+j, LOW);
@@ -137,7 +150,7 @@ void loop() {
        
     }
     
-    /*
+    
     if(pxCol[i]) {
       digitalWrite(3, HIGH);   // open valve
       digitalWrite(4, HIGH);
@@ -161,10 +174,10 @@ void loop() {
       digitalWrite(11, LOW);
       digitalWrite(12, LOW);
     }
-    */
+    
     // variable delay which changes for each pixel based due to gravitational accel
     int timeIndex = (int)yDiv - i;
-    delay(5*times[timeIndex]);
+    delay(times[timeIndex]);
     //delay(100);
     
   }
@@ -173,9 +186,30 @@ void loop() {
     digitalWrite(SOL1+j, LOW);
     
   }
-  /*
-  delay(2000);
+  */
+
+  for(int i = yDiv - 1; i>=0; i--) {
+    for(int j = 0; j<NUM_VALVES; j++) {
+      if(pxMatrixLines[i][j]) {
+        digitalWrite(SOL1+j, HIGH);
+      } else {
+        digitalWrite(SOL1+j, LOW);
+      }
+       
+    }
+    int timeIndex = (int)yDiv - i;
+    delay(times[timeIndex]);
+    //delay(100);
+    
+  }
+  for(int j = 0; j<NUM_VALVES; j++) {
+    digitalWrite(SOL1+j, LOW);
+    
+  }
   
+  
+  delay(2000);
+  /*
   for(int i = 0; i<yDiv; i++) {
     for(int j = 0; j<NUM_VALVES; j++) {
       if(pxMatrix2[i][j]) {
@@ -220,4 +254,5 @@ void loop() {
   
   delay(2000);
   */
+  
 }
