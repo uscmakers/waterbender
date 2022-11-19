@@ -99,6 +99,18 @@ int pxMatrix3[10][10] = {
 {0,0,0,1,1,1,1,1,1,0}
 };
 
+int pxMatrix3_squished[10][10] = {
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,1,1,1,1,1,1,1},
+{0,0,1,0,0,0,0,0,0,0},
+{0,1,0,0,0,0,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0},
+{0,0,0,1,1,1,1,1,1,1},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0}
+};
 
 
 void setup() {
@@ -188,18 +200,18 @@ void loop() {
   }
   */
 
-  for(int i = yDiv - 1; i>=0; i--) {
+  for(int i = yDiv-1; i>=0; i--) {
     for(int j = 0; j<NUM_VALVES; j++) {
-      if(pxMatrixLines[i][j]) {
+      if(pxMatrix1_1[i][j]) {
         digitalWrite(SOL1+j, HIGH);
       } else {
         digitalWrite(SOL1+j, LOW);
       }
        
     }
-    int timeIndex = (int)yDiv - i;
-    delay(times[timeIndex]);
-    //delay(100);
+    int timeIndex = i;
+    //delay(times[timeIndex]);
+    delay(25);
     
   }
   for(int j = 0; j<NUM_VALVES; j++) {
