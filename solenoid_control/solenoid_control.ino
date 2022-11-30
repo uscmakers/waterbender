@@ -3,7 +3,7 @@
 
 // desired height of water image, in meters
 double imgH = 1;
-
+int count = 0;
 double g = 9.81;
 
 // number of vertical divisions in image
@@ -329,6 +329,124 @@ void loop() {
   }
   */
 
+  // -----------SINE DESIGN-------------------
+  if(count < 100){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxSine[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+
+  //------------HEAET DESIGN---------------------
+  }else if(count < 200){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxHeart[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+  
+    delay(2000);
+
+  //---------------ZIGZAG DESIGN----------------
+  }else if(count < 300){                    
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxZigZag[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+  
+    delay(2000);
+
+  //------------CHODE CHECKERS DESIGN--------
+  }else if(count < 400){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxChode[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+  
+    delay(2000);
+  }else if(count < 500){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxStickFig[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+    count = 0;
+    delay(2000);
+  }
+  //-------DONE---------------//
   for(int i = 9; i>=0; i--) {
     for(int j = 0; j<NUM_VALVES; j++) {
       if(pxStickFig[i][j]) {
@@ -355,6 +473,6 @@ void loop() {
   
   
 
-  
+  count++;
   
 }
