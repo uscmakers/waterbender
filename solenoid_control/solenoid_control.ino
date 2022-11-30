@@ -3,7 +3,7 @@
 
 // desired height of water image, in meters
 double imgH = 1;
-int count = 0;
+
 double g = 9.81;
 
 // number of vertical divisions in image
@@ -13,6 +13,9 @@ double yDiv = 10;
 double yRes = imgH / yDiv;
 
 double times[10] = {};
+
+// counter for iteration of design
+int count = 0;
 
 /* DISPLAY A COLUMN OF PIXELS */
 // Beginning of array is bottom of image
@@ -330,7 +333,7 @@ void loop() {
   */
 
   // -----------SINE DESIGN-------------------
-  if(count < 100){
+  if(count < 10){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxSine[i][j]) {
@@ -344,8 +347,8 @@ void loop() {
       
     }
 
-  //------------HEAET DESIGN---------------------
-  }else if(count < 200){
+  //------------HEART DESIGN---------------------
+  }else if(count < 15){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxHeart[i][j]) {
@@ -371,7 +374,7 @@ void loop() {
     delay(2000);
 
   //---------------ZIGZAG DESIGN----------------
-  }else if(count < 300){                    
+  }else if(count < 30){                    
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxZigZag[i][j]) {
@@ -388,16 +391,17 @@ void loop() {
     }
   
     
-    
+    /*
     for(int j = 0; j<NUM_VALVES; j++) {
       digitalWrite(SOL1+j, LOW);
       
     }
   
     delay(2000);
+    */
 
   //------------CHODE CHECKERS DESIGN--------
-  }else if(count < 400){
+  }else if(count < 40){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxChode[i][j]) {
@@ -414,17 +418,19 @@ void loop() {
     }
   
     
-    
+    /*
     for(int j = 0; j<NUM_VALVES; j++) {
       digitalWrite(SOL1+j, LOW);
       
     }
   
     delay(2000);
-  }else if(count < 500){
+    */
+  //------------ROCKET DESIGN--------
+  }else if(count < 45){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
-        if(pxStickFig[i][j]) {
+        if(rocket[i][j]) {
           digitalWrite(SOL1+j, HIGH);
         } else {
           digitalWrite(SOL1+j, LOW);
@@ -443,10 +449,12 @@ void loop() {
       digitalWrite(SOL1+j, LOW);
       
     }
-    count = 0;
+    
     delay(2000);
   }
+  count++;
   //-------DONE---------------//
+  /*
   for(int i = 9; i>=0; i--) {
     for(int j = 0; j<NUM_VALVES; j++) {
       if(pxStickFig[i][j]) {
@@ -470,9 +478,10 @@ void loop() {
   }
 
   delay(2000);
+  */
   
   
 
-  count++;
+  
   
 }
