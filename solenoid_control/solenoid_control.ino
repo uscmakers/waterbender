@@ -21,19 +21,56 @@ int count = 0;
 // Beginning of array is bottom of image
 int pxCol[10] = {1,0,0,0,0,0,0,0,0,0};
 
+int pxMatrixCactus[10][10] = {
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,1,1,1,1,0,0,0},
+{1,1,0,1,1,1,1,0,0,0},
+{1,1,0,1,1,1,1,0,0,0},
+{1,1,0,1,1,1,1,0,1,1},
+{1,1,1,1,1,1,1,0,1,1},
+{0,0,0,1,1,1,1,0,1,1},
+{0,0,0,1,1,1,1,1,1,1},
+{0,0,0,1,1,1,1,0,0,0},
+{0,0,0,1,1,1,1,0,0,0}
+};
+
+int pxMatrixDoubleZag[10][10] = {
+{1,1,1,1,1,1,1,1,1,1},
+{0,1,1,1,1,1,1,1,1,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,0,1,1,1,1,0,0,0},
+{0,0,0,0,1,1,0,0,0,0},
+{0,0,0,0,1,1,0,0,0,0},
+{0,0,0,1,1,1,1,0,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,1,1,1,1,1,1,1,1,0},
+{1,1,1,1,1,1,1,1,1,1},
+};
+
+int pxRocketFull[10][10] = {
+{0,0,0,0,1,1,0,0,0,0},
+{0,0,0,1,1,1,1,0,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,0,1,1,1,1,1,1,0,0},
+{0,1,1,0,0,0,0,1,1,0},
+{0,1,0,0,0,0,0,0,1,0}
+};
 
 int pxMatrixLines[10][10] = {
-{1,1,1,1,1,1,1,1,1,1},
-{0,0,0,0,0,0,0,0,0,0},
-{1,1,1,1,1,1,1,1,1,1},
-{0,0,0,0,0,0,0,0,0,0},
-{1,1,1,1,1,1,1,1,1,1},
-{0,0,0,0,0,0,0,0,0,0},
-{1,1,1,1,1,1,1,1,1,1},
-{0,0,0,0,0,0,0,0,0,0},
-{1,1,1,1,1,1,1,1,1,1},
-{0,0,0,0,0,0,0,0,0,0}
-};
+  {1,1,1,1,1,1,1,1,1,1},
+  {0,0,0,0,0,0,0,0,0,0},
+  {1,1,1,1,1,1,1,1,1,1},
+  {0,0,0,0,0,0,0,0,0,0},
+  {1,1,1,1,1,1,1,1,1,1},
+  {0,0,0,0,0,0,0,0,0,0},
+  {1,1,1,1,1,1,1,1,1,1},
+  {0,0,0,0,0,0,0,0,0,0},
+  {1,1,1,1,1,1,1,1,1,1},
+  {0,0,0,0,0,0,0,0,0,0}};
 
 
 int pxCurve[10][10] = {
@@ -333,7 +370,7 @@ void loop() {
   */
 
   // -----------SINE DESIGN-------------------
-  if(count < 10){
+  if(count < 30){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxSine[i][j]) {
@@ -348,7 +385,7 @@ void loop() {
     }
 
   //------------HEART DESIGN---------------------
-  }else if(count < 15){
+  }else if(count < 35){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxHeart[i][j]) {
@@ -374,7 +411,7 @@ void loop() {
     delay(2000);
 
   //---------------ZIGZAG DESIGN----------------
-  }else if(count < 30){                    
+  }else if(count < 60){                    
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxZigZag[i][j]) {
@@ -401,7 +438,7 @@ void loop() {
     */
 
   //------------CHODE CHECKERS DESIGN--------
-  }else if(count < 40){
+  }else if(count < 80){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxChode[i][j]) {
@@ -427,10 +464,10 @@ void loop() {
     delay(2000);
     */
   //------------ROCKET DESIGN--------
-  }else if(count < 45){
+  }else if(count < 90){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
-        if(rocket[i][j]) {
+        if(pxRocketFull[i][j]) {
           digitalWrite(SOL1+j, HIGH);
         } else {
           digitalWrite(SOL1+j, LOW);
@@ -451,6 +488,57 @@ void loop() {
     }
     
     delay(2000);
+  //-------------HOURGLASS DESIGN--------
+  }else if(count < 110){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxMatrixDoubleZag[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+
+  //------------CACTUS DESIGN-------
+  }else if(count < 120){
+    for(int i = 9; i>=0; i--) {
+      for(int j = 0; j<NUM_VALVES; j++) {
+        if(pxMatrixCactus[i][j]) {
+          digitalWrite(SOL1+j, HIGH);
+        } else {
+          digitalWrite(SOL1+j, LOW);
+        }
+         
+      }
+      //int timeIndex = i;
+      //delay(times[timeIndex]);
+      delay(30* (1+((yDiv-1)/(100*yDiv))));
+      
+    }
+  
+    
+    
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+    delay(2000);
+    if(count == 139){
+      count = 0;
+    }
   }
   count++;
   //-------DONE---------------//
