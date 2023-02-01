@@ -71,7 +71,18 @@ int pxMatrixLines[10][10] = {
   {0,0,0,0,0,0,0,0,0,0},
   {1,1,1,1,1,1,1,1,1,1},
   {0,0,0,0,0,0,0,0,0,0}};
-
+int pxMatrixFullfish[10][10] = {
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{1,1,1,0,1,1,1,1,1,0},
+{0,1,1,1,1,1,1,1,1,1},
+{1,1,1,0,1,1,1,1,1,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0,0}
+};
 
 int pxCurve[10][10] = {
 {1,1,1,1,0,0,0,0,0,0},
@@ -370,10 +381,10 @@ void loop() {
   */
 
   // -----------SINE DESIGN-------------------
-  if(count < 30){
+  if(count < 100){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
-        if(pxSine[i][j]) {
+        if(pxHeart[i][j]) {
           digitalWrite(SOL1+j, HIGH);
         } else {
           digitalWrite(SOL1+j, LOW);
@@ -383,9 +394,15 @@ void loop() {
       delay(30* (1+((yDiv-1)/(100*yDiv))));
       
     }
+    for(int j = 0; j<NUM_VALVES; j++) {
+      digitalWrite(SOL1+j, LOW);
+      
+    }
+  
+    delay(2000);
 
   //------------HEART DESIGN---------------------
-  }else if(count < 35){
+  }else if(count < 40){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxHeart[i][j]) {
@@ -411,10 +428,10 @@ void loop() {
     delay(2000);
 
   //---------------ZIGZAG DESIGN----------------
-  }else if(count < 60){                    
+  }else if(count < 50){                    
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
-        if(pxZigZag[i][j]) {
+        if(pxMatrix1[i][j]) {
           digitalWrite(SOL1+j, HIGH);
         } else {
           digitalWrite(SOL1+j, LOW);
@@ -438,7 +455,7 @@ void loop() {
     */
 
   //------------CHODE CHECKERS DESIGN--------
-  }else if(count < 80){
+  }else if(count < 60){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxChode[i][j]) {
@@ -464,7 +481,7 @@ void loop() {
     delay(2000);
     */
   //------------ROCKET DESIGN--------
-  }else if(count < 90){
+  }else if(count < 70){
     for(int i = 9; i>=0; i--) {
       for(int j = 0; j<NUM_VALVES; j++) {
         if(pxRocketFull[i][j]) {
