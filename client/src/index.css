@@ -1,0 +1,55 @@
+body {
+  margin: 0;  
+}
+
+.outer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #675563;
+}
+
+.inner {
+  position: relative;
+  width: 80vw;
+  height: 90vh;
+  background: #a7a5a7;
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+}
+
+.pixel {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  cursor: crosshair !important;
+}
+
+.color {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+/* remove margin from last 2 childs */
+.color:not(:nth-last-child(-n + 2)) {
+  margin-bottom: 0.5rem;
+}
+
+.pallette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0.3rem;
+  width: 5rem;
+  height: auto;
+  background: #a7a5a7;
+  margin-left: 4rem;
+  align-self: flex-start;
+  margin-top: 6rem;
+}
