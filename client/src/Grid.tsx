@@ -11,8 +11,8 @@ const Gird = () => {
 
   useEffect(() => {
     // get width and height in rem
-    const width = Math.floor(ref.current!.clientWidth / 16);
-    const height = Math.floor(ref.current!.clientHeight / 16);
+    const width = 25; //Math.floor(ref.current!.clientWidth / 16);
+    const height = 25; //Math.floor(ref.current!.clientHeight / 16);
 
     // create a two dimensional array of Pixel components
     const grid: typeof pixels = [];

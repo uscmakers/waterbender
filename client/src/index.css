@@ -13,8 +13,8 @@ body {
 
 .inner {
   position: relative;
-  width: 80vw;
-  height: 90vh;
+  width: 60vw;
+  height: 64vh;
   background: #a7a5a7;
 }
 
@@ -51,5 +51,5 @@ body {
   background: #a7a5a7;
   margin-left: 4rem;
   align-self: flex-start;
-  margin-top: 6rem;
+  margin-top: 9rem;
 }

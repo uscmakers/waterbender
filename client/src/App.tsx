@@ -21,11 +21,11 @@ function App() {
             <Grid />
           </div>
           <Pallette />
+          <button onClick={onSubmit}>
+            Submit Drawing
+          </button>
         </div>
       </PaintContextProvider>
-      <button onClick={onSubmit}>
-        Submit Drawing
-      </button>
     </div>
   );
 }
