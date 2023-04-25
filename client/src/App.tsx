@@ -27,9 +27,9 @@ function App() {
           </div>
           <div className="side-panel">
             <Pallette />
-            <button onClick={onSubmit}>
+            {/* <button onClick={onSubmit}>
               Submit Drawing
-            </button>
+            </button> */}
           </div>
         </div>
       </PaintContextProvider>

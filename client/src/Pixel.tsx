@@ -5,9 +5,10 @@ interface IPixelProps {
   x: number;
   y: number;
   color: string;
+  grid: Array<Array<string>>;
 }
 
-const Pixel = ({ x, y, color }: IPixelProps) => {
+const Pixel = ({ x, y, color, grid }: IPixelProps) => {
   // wether the pixel is painted or not
   const [opacity, setOpacity] = useState(0);
   const { paintColor } = useContext(paintContext);
@@ -15,9 +16,10 @@ const Pixel = ({ x, y, color }: IPixelProps) => {
 
   const setColor = () => {
     setOwnColor(paintColor);
-
-    // set the opacity
+    // set the opacity 
     setOpacity(1);
+    
+    grid[y][x] = paintColor.toString();
   };
 
   const eraseColor = () => {
