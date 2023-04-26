@@ -94,7 +94,29 @@ def main():
     yRes = imgH / yDiv;
 
 #     times[10] = {};
-    times = []
+    times = [   [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+                [0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0],
+                [0,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,0,0,0],
+                [0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0],
+                [0,0,0,1,0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ]
 
     # populate times array
     for i in range(yDiv): 
@@ -109,22 +131,22 @@ def main():
     for j in range(NUM_VALVES):
         GPIO.output(ioMap[j], GPIO.LOW);
     
-    isRunning = False
+    isRunning = True
     
     image = []
 
     while (True):
-        if GPIO.input(runButton) == GPIO.LOW:
-            isRunning = not isRunning
-            sleep(0.1)
+        # if GPIO.input(runButton) == GPIO.LOW:
+        #     isRunning = not isRunning
+        #     sleep(0.1)
 
-        if GPIO.input(buttonTop) == GPIO.LOW and isRunning:
-            image = mongo(-1, False)
-            sleep(1)
-        elif GPIO.input(buttonBottom) == GPIO.LOW and isRunning:
-            image = mongo(1, False)
-            sleep(1)
-        elif image and isRunning: 
+        # if GPIO.input(buttonTop) == GPIO.LOW and isRunning:
+        #     image = mongo(-1, False)
+        #     sleep(1)
+        # elif GPIO.input(buttonBottom) == GPIO.LOW and isRunning:
+        #     image = mongo(1, False)
+        #     sleep(1)
+        # elif image and isRunning: 
             i = yDiv-1
             while i >= 0:
                 for j in range(NUM_VALVES):
@@ -143,9 +165,9 @@ def main():
                 GPIO.output(ioMap[j], GPIO.LOW)
             sleep(0.25)
 
-        if not isRunning:
-            for j in range(NUM_VALVES):
-                GPIO.output(ioMap[j], GPIO.LOW);
+        # if not isRunning:
+        #     for j in range(NUM_VALVES):
+        #         GPIO.output(ioMap[j], GPIO.LOW);
         
     
 #Actually run this code
