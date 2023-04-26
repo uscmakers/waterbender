@@ -3,10 +3,9 @@ from time import sleep
 import RPi.GPIO as GPIO
 import math
 
-SOL1 = 1
-NUM_VALVES = 10
+NUM_VALVES = 23
 
-def mongo(sortOrder):
+def mongo(sortOrder, delete=False):
     try:
         conn = MongoClient("mongodb+srv://waterbender:waterbender@cluster0.leahp9h.mongodb.net/?retryWrites=true&w=majority")
         print("Connected successfully!!!")
@@ -19,12 +18,20 @@ def mongo(sortOrder):
           
         # To find() all the entries inside collection
         cursor = collection.find().sort("_id", sortOrder).limit(1)
+
         for record in cursor:
             print("Mongo ID: ", record["_id"])
+
             image = record["image"]
             for row in range(len(image)):
                 print(record["image"][row])
+
+            if delete:
+                db.collection.remove({"_id":record["_id"]})
+
             return image
+        
+        return []
         
     except e:  
         print("Could not connect to MongoDB")
@@ -36,11 +43,48 @@ def main():
     print("Main running")
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
-
+    
+    ioMap = {}
+    ioMap[0] = 2
+    ioMap[1] = 3
+    ioMap[2] = 4
+    ioMap[3] = 17
+    ioMap[4] = 27
+    ioMap[5] = 22
+    ioMap[6] = 10
+    ioMap[7] = 9
+    ioMap[8] = 11
+    ioMap[9] = 0
+    ioMap[10] = 5
+    ioMap[11] = 6
+    ioMap[12] = 13 #Sounds funny 
+    ioMap[13] = 19
+    ioMap[14] = 26
+    ioMap[15] = 14
+    ioMap[16] = 15
+    ioMap[17] = 18
+    ioMap[18] = 23
+    ioMap[19] = 24
+    ioMap[20] = 25
+    ioMap[21] = 8
+    ioMap[22] = 7
+    buttonTop = -1 #CHANGE THIS TO WHATEVER IT REALLY IS
+    buttonBottom = -1 #CHANGE THIS TO WHATEVER IT REALLY IS
+    runButton = -1
+    
+    # Setup Valves' IO
+    for i in range(NUM_VALVES):
+        GPIO.setup(ioMap[i], GPIO.OUT)
+    
+    # Setup Buttons IO
+    GPIO.setup(buttonTop, GPIO.IN, pull_up_down=GPIO.PUD_UP);
+    GPIO.setup(buttonBottom, GPIO.IN, pull_up_down=GPIO.PUD_UP);
+    GPIO.setup(runButton, GPIO.IN, pull_up_down=GPIO.PUD_UP);
 
     # desired height of water image, in meters
     imgH = 1;
 
+    # gravity
     g = 9.81;
 
     # number of vertical divisions in image
@@ -51,34 +95,6 @@ def main():
 
 #     times[10] = {};
     times = []
-    
-    ioMap = {}
-    ioMap[1] = 15
-    ioMap[2] = 16
-    ioMap[3] = 18
-    ioMap[4] = 22
-    ioMap[5] = 7
-    ioMap[6] = 3
-    ioMap[7] = 5
-    ioMap[8] = 24
-    ioMap[9] = 26
-    ioMap[10] = 19
-    buttonTop = 4 #CHANGE THIS TO WHATEVER IT REALLY IS
-#     buttonBottom = 2 #CHANGE THIS TO WHATEVER IT REALLY IS
-    
-  # put your setup code here, to run once:
-    GPIO.setup(ioMap[1], GPIO.OUT);#3
-    GPIO.setup(ioMap[2], GPIO.OUT);#4
-    GPIO.setup(ioMap[3], GPIO.OUT);#5
-    GPIO.setup(ioMap[4], GPIO.OUT);#6
-    GPIO.setup(ioMap[5], GPIO.OUT);#7
-    GPIO.setup(ioMap[6], GPIO.OUT);#8
-    GPIO.setup(ioMap[7], GPIO.OUT);#9
-    GPIO.setup(ioMap[8], GPIO.OUT);#10
-    GPIO.setup(ioMap[9], GPIO.OUT);#11
-    GPIO.setup(ioMap[10], GPIO.OUT);#12
-    GPIO.setup(buttonTop, GPIO.IN, pull_up_down=GPIO.PUD_UP);
-#     GPIO.setup(buttonBottom, GPIO.IN, pull_up_down=GPIO.PUD_DOWN);
 
     # populate times array
     for i in range(yDiv): 
@@ -91,25 +107,31 @@ def main():
         times[i] = times[i] * 1000;
 
     for j in range(NUM_VALVES):
-        GPIO.output(ioMap[SOL1+j], GPIO.LOW);
+        GPIO.output(ioMap[j], GPIO.LOW);
     
-    #image = mongo()
+    isRunning = False
     
     image = []
 
     while (True):
-        if GPIO.input(buttonTop) == GPIO.LOW:
-            image = mongo(-1)
-#         elif GPIO.input(buttonBottom) == GPIO.LOW:
-#             image = mongo(-1)
-        elif image: 
+        if GPIO.input(runButton) == GPIO.LOW:
+            isRunning = not isRunning
+            sleep(0.1)
+
+        if GPIO.input(buttonTop) == GPIO.LOW and isRunning:
+            image = mongo(-1, True)
+            sleep(1)
+        elif GPIO.input(buttonBottom) == GPIO.LOW and isRunning:
+            image = mongo(1, True)
+            sleep(1)
+        elif image and isRunning: 
             i = yDiv-1
             while i >= 0:
                 for j in range(NUM_VALVES):
                     if(image[i][j]):
-                        GPIO.output(ioMap[SOL1+j], GPIO.HIGH)
+                        GPIO.output(ioMap[j], GPIO.HIGH)
                     else:
-                        GPIO.output(ioMap[SOL1+j], GPIO.LOW)
+                        GPIO.output(ioMap[j], GPIO.LOW)
                 
                
                 #timeIndex = i;
@@ -118,13 +140,13 @@ def main():
                 i -= 1
                 
             for j in range(NUM_VALVES):
-                GPIO.output(ioMap[SOL1+j], GPIO.LOW)
+                GPIO.output(ioMap[j], GPIO.LOW)
             sleep(0.25)
-        
 
-    # IDK what this is for ngl
-    for j in range(NUM_VALVES):
-        GPIO.output(ioMap[SOL1+j], GPIO.LOW);
+        if not isRunning:
+            for j in range(NUM_VALVES):
+                GPIO.output(ioMap[j], GPIO.LOW);
+        
     
 #Actually run this code
 main()
