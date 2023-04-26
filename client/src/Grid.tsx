@@ -47,9 +47,11 @@ const Gird = () => {
     }
     axios.post("http://localhost:8080/sendDrawing/", drawing).then((response) => {
       console.log(response.data);
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);
+      window.alert("Failed to set image")
     });
   }
 
@@ -59,12 +61,11 @@ const Gird = () => {
         {pixels}
       </div>
       <div>
-        <button onClick={onSubmitTest}>
+        <button onClick={onSubmitTest} className="button">
                 Submit Drawing
         </button>
       </div>
     </div>
-    
   );
 };
 

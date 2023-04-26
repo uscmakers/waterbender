@@ -22,14 +22,11 @@ function App() {
       </div>
       <PaintContextProvider>
         <div className="outer">
+          <div>
+            <Pallette />
+          </div>
           <div className="inner">
             <Grid />
-          </div>
-          <div className="side-panel">
-            <Pallette />
-            {/* <button onClick={onSubmit}>
-              Submit Drawing
-            </button> */}
           </div>
         </div>
       </PaintContextProvider>
