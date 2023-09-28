@@ -17,12 +17,12 @@ Waterbender creates 2D designs with vertical streams of water. Each stream of wa
 ### Fall Semester
 As is typically done in industry, we started off our design with a proof of concept, that had the core features we needed to make a minimum viable product:
 
-<img width="404" alt="Screenshot 2023-09-27 at 1 08 08 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/6e33486f-7971-4707-8cb1-435ec1e122b4">
+<img width="500" alt="Screenshot 2023-09-27 at 1 08 08 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/6e33486f-7971-4707-8cb1-435ec1e122b4">
 
 
 This design only used 10 smaller solenoid valves, had simpler code, and was dwarved by our spring semester iteration:
 
-<img width="584" alt="Screenshot 2023-09-27 at 1 09 16 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/53e45d10-cf4d-4f88-a44b-29155a84e48a">
+<img width="500" alt="Screenshot 2023-09-27 at 1 09 16 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/53e45d10-cf4d-4f88-a44b-29155a84e48a">
 
 
 ### Spring Semester
