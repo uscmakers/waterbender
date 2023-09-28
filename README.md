@@ -10,7 +10,7 @@ Waterbender is a student-created art installation that is both dynamic and inter
 
 Waterbender creates 2D designs with vertical streams of water. Each stream of water is controlled by an electric valve that is hooked up to our microcontroller. Our project is a fully independent, integrated system that automatically displays user inputted images, and regulates its own water levels using top and bottom water reservoirs, pumps, and water level sensors.
 
-<img width="512" alt="Screenshot 2023-09-27 at 1 05 06 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/0f976752-a76c-4818-978a-d302f6e33bff">
+<img width="200" alt="Screenshot 2023-09-27 at 1 05 06 PM" src="https://github.com/uscmakers/waterbender/assets/31314514/0f976752-a76c-4818-978a-d302f6e33bff">
 
 
 ## Timeline
