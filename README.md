@@ -3,7 +3,7 @@
 Waterbender is a student-created art installation that is both dynamic and interactive. Using a built in webapp, user can create their own custom 2D designs, which are then displayed by dynamic streams of water.
 
 
-![img_1](https://github.com/uscmakers/waterbender/assets/31314514/10e13fb9-68ab-40d8-9055-5ef34b16d7bb)
+<img width="500" alt="img1" src="https://github.com/uscmakers/waterbender/assets/31314514/10e13fb9-68ab-40d8-9055-5ef34b16d7bb">
 
 
 ## Overview
