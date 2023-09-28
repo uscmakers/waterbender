@@ -44,7 +44,7 @@ Since our project was so tall and our workspace was in the basement of a buildin
 
 <img width="500" alt="IMG_0944" src="https://github.com/uscmakers/waterbender/assets/31314514/7e4fae2e-8ec8-46f2-8d52-272f45124599">
 
-![IMG_0938](https://github.com/uscmakers/waterbender/assets/31314514/6c8fda2b-c7e2-4096-bfd4-c09b31867eca)
+<img width="500" alt="IMG_0938" src="https://github.com/uscmakers/waterbender/assets/31314514/6c8fda2b-c7e2-4096-bfd4-c09b31867eca">
 
 
 We all know that water and electronics don't mix well, and we narrowly avoided some catastrophic situations :)
@@ -54,7 +54,7 @@ We all know that water and electronics don't mix well, and we narrowly avoided s
 ## Acknowledgements
 Special thank you to our team, Allan Weber, duct tape, and the very reliable EEB basement ladder.
 
-![IMG_2538](https://github.com/uscmakers/waterbender/assets/31314514/fcbd51b1-e71e-4ffd-be5a-6d0f24e30a4b)
+<img width="500" alt="IMG_2538" src="https://github.com/uscmakers/waterbender/assets/31314514/fcbd51b1-e71e-4ffd-be5a-6d0f24e30a4b">
 
 
 ## Team Members
