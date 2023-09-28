@@ -42,7 +42,7 @@ Since each column of water is requires one valve controlling it, we had 2.3x mor
 
 Since our project was so tall and our workspace was in the basement of a building, working on and moving the project was a constant struggle. Here are some highlights:
 
-<img width="200" alt="IMG_0944" src="https://github.com/uscmakers/waterbender/assets/31314514/7e4fae2e-8ec8-46f2-8d52-272f45124599">
+<img width="300" alt="IMG_0944" src="https://github.com/uscmakers/waterbender/assets/31314514/7e4fae2e-8ec8-46f2-8d52-272f45124599">
 
 ![IMG_0938](https://github.com/uscmakers/waterbender/assets/31314514/6c8fda2b-c7e2-4096-bfd4-c09b31867eca)
 
