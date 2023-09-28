@@ -32,7 +32,7 @@ In our second and final semester, we used our learnings from the previous semest
 * **leak free** water reservoirs (which is very important when all your high power electronics are housed next to them, this was a major challenge)
 * pumps that recirculate water after it falls down, from the bottom reservoir back to the top reservoir
 * **reliable** water level sensors that ensure that the pumps turn off when the top reservoir is full, so it doesn't overflow and destroy all our electronics
-* more robust, easy to use webapp to draw custom designs and send them via https communications to our micrcontroller
+* more robust, easy to use webapp to draw custom designs and send them via http communications to our micrcontroller
 * laser engraved wooden panels to hide the internals of our project
 * electronics soldered onto protoboards (as opposed to breadboard) so that they are more reliable and connections are less likely to come loose
 
