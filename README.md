@@ -42,17 +42,21 @@ Since each column of water is requires one valve controlling it, we had 2.3x mor
 
 Since our project was so tall and our workspace was in the basement of a building, working on and moving the project was a constant struggle. Here are some highlights:
 
+
+
 <img width="500" alt="IMG_0944" src="https://github.com/uscmakers/waterbender/assets/31314514/7e4fae2e-8ec8-46f2-8d52-272f45124599">
 
 <img width="500" alt="IMG_0938" src="https://github.com/uscmakers/waterbender/assets/31314514/6c8fda2b-c7e2-4096-bfd4-c09b31867eca">
 
 
-We all know that water and electronics don't mix well, and we narrowly avoided some catastrophic situations :)
+
+We all know that water and electronics don't mix well, so we planned our design accordingly. This was difficult because all electronics had to be placed above any areas where water may leak.
+
 
 ## Technical Breakdown
 
 ## Acknowledgements
-Special thank you to our team, Allan Weber, duct tape, and the very reliable EEB basement ladder.
+Special thank you to our team, Professor Weber, duct tape, and the very reliable EEB basement ladder.
 
 <img width="500" alt="IMG_2538" src="https://github.com/uscmakers/waterbender/assets/31314514/fcbd51b1-e71e-4ffd-be5a-6d0f24e30a4b">
 
