@@ -67,6 +67,6 @@ Baran Cinbis
 ### Software Team
 Pooja Kowshik, Akhilesh Bellathur
 ### Electrical Team
-Evan Hashemi
+Evan Hashemi, Mia Wang
 ### Mechanical Team
 Aidan Leitch, Niusha Khoshsar, Victoria Pinkett
